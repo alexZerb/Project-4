@@ -7,20 +7,30 @@ class Game {
         this.missed = 0;
         this.activePhrase = 'null';
         this.phrases = [
-            'Every cloud has a silver lining', 
-            'Your guess is as good as mine', 
-            'Ignorance is bliss',
-            'Slow and steady wins the race',
-            'He who laughs last laughs loudest'
+            new Phrase ('I am legend'), 
+            new Phrase ('Men in black'), 
+            new Phrase('Bad boys'),
+            new Phrase('Enemy of the state'),
+            new Phrase('Independance day')
         ];
     }
+/**
+* Selects random phrase from phrases property
+* @return {Object} Phrase object chosen to be used
+*/
+    getRandomPhrase() {
+       const phraseIndex = Math.floor(Math.random() * this.phrases.length);
+       return this.phrases[phraseIndex];
+       
+    };
 
 /**
-* Creates phrases for use in game
-* @return {array} An array of phrases that could be used in the game
+* Begins game by selecting a random phrase and displaying it to user
 */
-    // createPhrases() {
-
-    // };
-
+    startGame() {
+       document.querySelector('#overlay').style.display = 'none'; 
+       const phrase = this.getRandomPhrase();
+       phrase.addPhraseToDisplay();
+       this.activePhrase = phrase;
+    };
 }
