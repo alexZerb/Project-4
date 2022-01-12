@@ -57,8 +57,11 @@ won
 * Checks if player has remaining lives and ends game if player is out
 */
     removeLife() {
-
-
+        const lives = document.querySelectorAll('.tries');
+        this.missed += 1;
+        let loseLife = lives[this.missed - 1];
+        let image = loseLife.firstElementChild;
+        image.src = 'images/lostHeart.png';
 
     }
 /**
