@@ -10,7 +10,7 @@ class Game {
             new Phrase ('I am legend'), 
             new Phrase ('Men in black'), 
             new Phrase('Bad boys'),
-            new Phrase('Enemy of the state'),
+            new Phrase('Hitch'),
             new Phrase('Independance day')
         ];
     }
@@ -33,4 +33,11 @@ class Game {
        phrase.addPhraseToDisplay();
        this.activePhrase = phrase;
     };
+
+    checkForWin() {}
+
+    removeLife() {}
+
+    gameOver() {}
+
 }
