@@ -47,6 +47,7 @@ class Phrase {
         for(let i = 0; i < lis.length; i++){
             if(lis[i].textContent === letter){
                 lis[i].classList.add('show');
+                lis[i].classList.remove('hide');
             }
         }
             

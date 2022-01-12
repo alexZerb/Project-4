@@ -33,11 +33,42 @@ class Game {
        phrase.addPhraseToDisplay();
        this.activePhrase = phrase;
     };
+/**
+* Checks for winning move
+* @return {boolean} True if game has been won, false if game wasn't
+won
+*/
+    checkForWin() {
+        const unguessedLetters = document.querySelectorAll('.hide');
+        console.log(unguessedLetters);
+        if (unguessedLetters.length !== 0) {
+            return false;
+        } else  if (unguessedLetters.length === 0 && this.missed !== 5){
+            return true;
+        }
+        
+    
+    
+        
+ }
+/**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player is out
+*/
+    removeLife() {
 
-    checkForWin() {}
 
-    removeLife() {}
 
-    gameOver() {}
+    }
+/**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
+    gameOver() {
+
+
+
+    }
 
 }
