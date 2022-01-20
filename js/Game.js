@@ -20,8 +20,7 @@ class Game {
 */
     getRandomPhrase() {
        const phraseIndex = Math.floor(Math.random() * this.phrases.length);
-       return this.phrases[phraseIndex];
-       
+       return this.phrases[phraseIndex];  
     };
 
 /**
@@ -45,11 +44,7 @@ won
             return false;
         } else  if (unguessedLetters.length === 0 && this.missed !== 5){
             return true;
-        }
-        
-    
-    
-        
+        }   
  }
 /**
 * Increases the value of the missed property
@@ -62,14 +57,24 @@ won
         let loseLife = lives[this.missed - 1];
         let image = loseLife.firstElementChild;
         image.src = 'images/lostHeart.png';
-
     }
 /**
 * Displays game over message
 * @param {boolean} gameWon - Whether or not the user won the game
 */
-    gameOver() {
-
+    gameOver(win) {
+        const gameOverMessage = document.getElementById('game-over-message');
+        const showPhrase = `<br><br>Phrase: <br> '${game.activePhrase.phrase}'`;
+        if(win) {
+            gameOverMessage.parentElement.style.display = '';
+            gameOverMessage.parentElement.className = 'win';
+            gameOverMessage.innerHTML = 'You win! Play again?'
+        } else {
+            gameOverMessage.parentElement.style.display = '';
+            gameOverMessage.parentElement.className = 'lose';
+            gameOverMessage.innerHTML = 'You lose! Play again?'
+    
+        }
 
 
     }
