@@ -39,7 +39,6 @@ won
 */
     checkForWin() {
         const unguessedLetters = document.querySelectorAll('.hide');
-        console.log(unguessedLetters);
         if (unguessedLetters.length !== 0) {
             return false;
         } else  if (unguessedLetters.length === 0 && this.missed !== 5){
@@ -57,6 +56,8 @@ won
         let loseLife = lives[this.missed - 1];
         let image = loseLife.firstElementChild;
         image.src = 'images/lostHeart.png';
+        if(this.missed === 5)
+        this.gameOver();
     }
 /**
 * Displays game over message
@@ -88,13 +89,26 @@ won
             button.disabled = true;
             console.log('boom');
         }
+//Second condtional checks key matching letter, else removes life       
         if(this.activePhrase.checkLetter(button.innerHTML)){
             this.activePhrase.showMatchedLetter(button.innerHTML); 
             button.classList.add('chosen'); 
+//Third conditional checks if game is over            
+            if(this.checkForWin()) {
+                this.gameOver(this.checkForWin());
+            }
         } else {
              button.classList.add('wrong');
             this.removeLife();
          }
         
     };
+    gameReset() {
+        const phraseElement = document.querySelector('#phrase');
+        const ulPhraseElement = phraseElement.querySelector('ul');
+        while(ulPhraseElement.firstChild) {
+            ulPhraseElement.removeChild(ulPhraseElement.firstChild);
+        }
+        
+    }
 }
