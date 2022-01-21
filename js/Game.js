@@ -1,5 +1,5 @@
 /* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
+ * Project 4 - OOP Game App (Will Smith Movies :) )
  * Game.js */
 
 class Game {
@@ -116,10 +116,12 @@ won
             key.classList.remove('wrong');
             key.disabled = false;
         });
-        const lifeReset = document.querySelectorAll('.tries');
+        let lifeReset = document.querySelectorAll('.tries');
+    // sets missed counter to 0, adds lives back to board
         this.missed = 0;
-        lifeReset.forEach(life => {
-            
+        lifeReset.forEach(addLife => {
+            let image = addLife.firstElementChild;
+            image.src = 'images/liveHeart.png';
         });
     }
 }
