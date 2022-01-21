@@ -56,8 +56,6 @@ won
         let loseLife = lives[this.missed - 1];
         let image = loseLife.firstElementChild;
         image.src = 'images/lostHeart.png';
-        if(this.missed === 5)
-        this.gameOver();
     }
 /**
 * Displays game over message
@@ -73,10 +71,7 @@ won
             gameOverMessage.parentElement.style.display = '';
             gameOverMessage.parentElement.className = 'lose';
             gameOverMessage.innerHTML = 'You lose! Play again?'
-    
         }
-
-
     }
 
 /**
@@ -87,28 +82,44 @@ won
 //First conditional disables button after clicking
         if(button !== undefined) {
             button.disabled = true;
-            console.log('boom');
         }
 //Second condtional checks key matching letter, else removes life       
         if(this.activePhrase.checkLetter(button.innerHTML)){
             this.activePhrase.showMatchedLetter(button.innerHTML); 
             button.classList.add('chosen'); 
-//Third conditional checks if game is over            
+//Third conditional checks if game is over and resets boards            
             if(this.checkForWin()) {
                 this.gameOver(this.checkForWin());
+                this.gameReset();
             }
         } else {
              button.classList.add('wrong');
             this.removeLife();
+            if(this.missed === 5) {
+                this.gameOver(false);
+                this.gameReset();
+            }
+            
          }
         
     };
     gameReset() {
         const phraseElement = document.querySelector('#phrase');
         const ulPhraseElement = phraseElement.querySelector('ul');
+    // removes any previously added li elements from board
         while(ulPhraseElement.firstChild) {
             ulPhraseElement.removeChild(ulPhraseElement.firstChild);
         }
-        
+        const keyReset = document.querySelectorAll('.key');
+        keyReset.forEach((key) => {
+            key.classList.remove('chosen');
+            key.classList.remove('wrong');
+            key.disabled = false;
+        });
+        const lifeReset = document.querySelectorAll('.tries');
+        this.missed = 0;
+        lifeReset.forEach(life => {
+            
+        });
     }
 }
