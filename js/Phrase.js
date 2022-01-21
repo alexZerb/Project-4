@@ -33,9 +33,7 @@ class Phrase {
 * @param (string) letter - Letter to check
 */
     checkLetter(letter) {
-
         return this.phrase.includes(letter);
-
     }
 /**
 * Displays passed letter on screen after a match is found
@@ -49,10 +47,6 @@ class Phrase {
                 lis[i].classList.add('show');
                 lis[i].classList.remove('hide');
             }
-        }
-            
+        }        
      }
-
-    
-    
 }
