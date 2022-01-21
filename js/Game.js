@@ -64,7 +64,6 @@ won
 */
     gameOver(win) {
         const gameOverMessage = document.getElementById('game-over-message');
-        const showPhrase = `<br><br>Phrase: <br> '${game.activePhrase.phrase}'`;
         if(win) {
             gameOverMessage.parentElement.style.display = '';
             gameOverMessage.parentElement.className = 'win';
@@ -79,4 +78,23 @@ won
 
     }
 
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
+    handleInteraction(button) {
+//First conditional disables button after clicking
+        if(button !== undefined) {
+            button.disabled = true;
+            console.log('boom');
+        }
+        if(this.activePhrase.checkLetter(button.innerHTML)){
+            this.activePhrase.showMatchedLetter(button.innerHTML); 
+            button.classList.add('chosen'); 
+        } else {
+             button.classList.add('wrong');
+            this.removeLife();
+         }
+        
+    };
 }

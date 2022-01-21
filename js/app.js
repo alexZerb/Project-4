@@ -4,16 +4,15 @@
 
 let game;
 const button = document.getElementById('btn__reset');
-const keyBoard = document.querySelectorAll('.keyrow');
+const keyBoard = document.querySelectorAll('.key');
 button.addEventListener('click', e => {
     game = new Game();
     game.startGame();
 
 })
-keyBoard.forEach(key => {
-    key.addEventListener('click', e => {
-        console.log('boom');
-
+keyBoard.forEach(button => {
+    button.addEventListener('click', e => {
+        game.handleInteraction(button);
     });
 });
 
